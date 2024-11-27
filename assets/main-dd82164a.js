@@ -34,9 +34,10 @@ const portfolioData = [
 function initTypedJs() {
   const options = {
     strings: [i18n.t('title')],
-    typeSpeed: 50,
-    backSpeed: 30,
-    backDelay: 5000,
+    typeSpeed: 80,
+    backSpeed: 50,
+    backDelay: 8000,
+    startDelay: 1000,
     loop: true
   };
 
@@ -222,9 +223,9 @@ function initThemeToggle() {
   if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme === 'dark');
-  } else if (systemPrefersDark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcon(true);
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    updateThemeIcon(false);
   }
   
   // Toggle theme
