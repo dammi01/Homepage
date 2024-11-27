@@ -1,0 +1,25 @@
+{
+  "name": "michael-dambock-portfolio",
+  "version": "1.0.0",
+  "description": "Michael Dambock's Professional Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/vite/bin/vite.js",
+    "build": "./node_modules/vite/bin/vite.js build",
+    "preview": "./node_modules/vite/bin/vite.js preview"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "frontend"
+  ],
+  "author": "Michael Dambock",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^4.5.0",
+    "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "typed.js": "^2.1.0"
+  }
+}
