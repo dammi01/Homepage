@@ -31,7 +31,14 @@ const portfolioData = [
 ];
 
 // Initialize Typed.js
+let typedInstance = null;  // Add this line to store the Typed instance
+
 function initTypedJs() {
+  // Destroy existing instance if it exists
+  if (typedInstance) {
+    typedInstance.destroy();
+  }
+
   const options = {
     strings: [i18n.t('title')],
     typeSpeed: 80,
@@ -41,7 +48,7 @@ function initTypedJs() {
     loop: true
   };
 
-  new Typed('.typed-text', options);
+  typedInstance = new Typed('.typed-text', options);
 }
 
 // Header scroll effect
@@ -96,6 +103,9 @@ function initLanguageSelector() {
       // Update button text
       const buttonText = languageButton.querySelector('span');
       buttonText.textContent = i18n.t('languageMenu');
+
+      // Reinitialize Typed.js with new language
+      initTypedJs();
     });
   });
 
