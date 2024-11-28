@@ -10,14 +10,8 @@ export default {
   navPortfolio: "Portfólio",
   navContact: "Contato",
   name: "Michael Dambock",
-  title: "Analista de Sistemas, Desenvolvedor Backend, Provedor de Soluções",
-  description: `Desenvolvedor experiente com mais de 20 anos em TI, agora focado na aplicação de expertise
-    em Ciência de Dados, Alquimia de Dados e desenvolvimento orientado por IA. Buscando aproveitar
-    forte experiência em programação, gerenciamento de projetos, análise de dados e desenvolvimento
-    de sistemas em larga escala para criar soluções inovadoras.
-    
-    Comprometido com o avanço tecnológico através da integração de engenharia de software tradicional,
-    inovação e metodologias modernas de IA.`,
+  title: "Engenheiro de Dados, Analista de Sistemas, Desenvolvedor Backend, Provedor de Soluções",
+  description: `Com mais de 20 anos de experiência em TI, sou um desenvolvedor entusiasmado que atualmente está se especializando em Engenharia de Dados e soluções impulsionadas por IA. Meu objetivo é aproveitar meu conhecimento em programação, gerenciamento de projetos e análise de processos/dados para criar sistemas inovadores que não apenas aprimorem as capacidades tecnológicas, mas também reduzam significativamente os custos e economizem tempo para as organizações.\n\nEstou comprometido em construir pipelines de dados escaláveis e eficientes que garantam a integração perfeita das tecnologias de IA. Ao focar nos processos essenciais de aquisição, limpeza, transformação e integração de dados, pretendo fornecer às empresas as ferramentas necessárias para tomar decisões informadas de forma rápida e eficaz. Minha aspiração é ajudar as empresas a navegar nas complexidades da gestão de dados enquanto alcançam seus objetivos operacionais de maneira mais eficiente.`,
   download: "Baixar Currículo",
   contact: "Contate-me",
   aboutHeading: "Sobre Mim",

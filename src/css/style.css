@@ -156,6 +156,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #0ef;
 }
 
+.name {
+  margin-bottom: calc(0.5rem * 0.7);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
 /* Header Styles */
 .header {
   height: var(--header-height);
@@ -224,15 +231,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  width: 90px;
+  height: auto;
+  margin: 0 1rem 0.7rem;
   background: -webkit-linear-gradient(#0ef, #0ef0);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: 120px;
+  }
 }
 
 .logo:hover {
@@ -347,7 +359,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Home Section */
 .home {
   min-height: 100vh;
-  padding: var(--spacing-16) var(--spacing-4);
+  padding-top: calc(var(--spacing-16) * 0.7);
+  text-align: center;
 }
 
 .home-content {
@@ -419,11 +432,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .home-text img {
-  margin-bottom: 2rem;
-  width: 150px;
-  height: 150px;
+  margin-bottom: 1.4rem;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .home-text img {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 .home-img {

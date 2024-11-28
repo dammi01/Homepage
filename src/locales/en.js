@@ -10,14 +10,9 @@ export default {
   navPortfolio: "Portfolio",
   navContact: "Contact",
   name: "Michael Dambock",
-  title: "System Analyst, Backend Developer, Solution Provider",
+  title: "Data Engineer, System Analyst, Backend Developer, Solution Provider",
   underConstruction: "Under construction!",
-  description: `Experienced Developer with over 20 years in IT, now focused on applying expertise to Data Science,
-    Data Alchemy and AI-driven development. Seeking to leverage strong background in programming,
-    project management, data analysis, and large-scale system development to create innovative solutions.
-    
-    Committed to technological advancement through the integration of traditional software engineering,
-    innovation and modern AI methodologies.`,
+  description: `With over 20 years of experience in IT, I am an enthusiastic Developer currently specializing in Data Engineering and AI-driven solutions. My goal is to leverage my background in programming, project management, and process/data analysis to create innovative systems that not only enhance technological capabilities but also significantly reduce costs and save time for organizations.\n\nI am committed to building scalable and efficient data pipelines that ensure seamless integration of AI technologies. By focusing on the essential processes of data acquisition, cleaning, transformation, and integration, I aim to provide businesses with the tools they need to make informed decisions quickly and effectively. My aspiration is to help companies navigate the complexities of data management while achieving their operational goals more efficiently.`,
   download: "Download CV",
   contact: "Contact Me",
   aboutHeading: "About Me",

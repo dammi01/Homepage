@@ -31,16 +31,24 @@ const portfolioData = [
 ];
 
 // Initialize Typed.js
+let typedInstance = null;  // Add this line to store the Typed instance
+
 function initTypedJs() {
+  // Destroy existing instance if it exists
+  if (typedInstance) {
+    typedInstance.destroy();
+  }
+
   const options = {
     strings: [i18n.t('title')],
-    typeSpeed: 50,
-    backSpeed: 30,
-    backDelay: 5000,
+    typeSpeed: 80,
+    backSpeed: 50,
+    backDelay: 8000,
+    startDelay: 1000,
     loop: true
   };
 
-  new Typed('.typed-text', options);
+  typedInstance = new Typed('.typed-text', options);
 }
 
 // Header scroll effect
@@ -95,6 +103,9 @@ function initLanguageSelector() {
       // Update button text
       const buttonText = languageButton.querySelector('span');
       buttonText.textContent = i18n.t('languageMenu');
+
+      // Reinitialize Typed.js with new language
+      initTypedJs();
     });
   });
 
@@ -222,9 +233,9 @@ function initThemeToggle() {
   if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme === 'dark');
-  } else if (systemPrefersDark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcon(true);
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    updateThemeIcon(false);
   }
   
   // Toggle theme

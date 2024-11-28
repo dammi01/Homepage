@@ -10,15 +10,9 @@ export default {
   navPortfolio: "Portfolio",
   navContact: "Kontakt",
   name: "Michael Dambock",
-  title: "Systemanalytiker, Backend-Entwickler, Lösungsanbieter",
+  title: "Dateningenieur, Systemanalytiker, Backend-Entwickler, Lösungsanbieter",
   underConstruction: "Seite im Aufbau!",
-  description: `Erfahrener Entwickler mit über 20 Jahren IT-Erfahrung, jetzt fokussiert auf die Anwendung von
-    Expertise in Data Science, Data Alchemy und KI-gestützter Entwicklung. Strebt danach, fundierte
-    Kenntnisse in Programmierung, Projektmanagement, Datenanalyse und Entwicklung großer Systeme
-    zu nutzen, um innovative Lösungen zu schaffen.
-    
-    Engagiert für technologischen Fortschritt durch die Integration von traditioneller
-    Softwareentwicklung, Innovation und modernen KI-Methodologien.`,
+  description: `Mit über 20 Jahren Erfahrung in der IT bin ich ein begeisterter Entwickler, der sich derzeit auf Data Engineering und KI-gesteuerte Lösungen spezialisiert. Mein Ziel ist es, meinen Hintergrund in Programmierung, Projektmanagement und Prozess-/Datenanalyse zu nutzen, um innovative Systeme zu schaffen, die nicht nur technologische Fähigkeiten verbessern, sondern auch erheblich Kosten senken und Zeit für Organisationen sparen.\n\nIch setze mich dafür ein, skalierbare und effiziente Datenpipelines zu entwickeln, die eine nahtlose Integration von KI-Technologien gewährleisten. Indem ich mich auf die wesentlichen Prozesse der Datenerfassung, -bereinigung, -transformation und -integration konzentriere, möchte ich Unternehmen die Werkzeuge an die Hand geben, die sie benötigen, um schnell und effektiv fundierte Entscheidungen zu treffen. Mein Bestreben ist es, Unternehmen dabei zu helfen, die Komplexität des Datenmanagements zu bewältigen und gleichzeitig ihre operativen Ziele effizienter zu erreichen.`,
   download: "Lebenslauf herunterladen",
   contact: "Kontaktieren Sie mich",
   aboutHeading: "Über Mich",

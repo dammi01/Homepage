@@ -34,3 +34,21 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Package files
+*.tgz
+*.tar.gz
+
+# Temporary and backup files
+*.bkp
+temp.*
+*.txt
+script_bkp.js
+*.md
+
+# Local development files
+deploy.sh
+node-setup.sh
+
+# Keep specific markdown files
+!README.md
