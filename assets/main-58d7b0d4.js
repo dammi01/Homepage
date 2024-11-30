@@ -254,6 +254,38 @@ function updateThemeIcon(isDark) {
   themeIcon.className = isDark ? 'bx bx-moon' : 'bx bx-sun';
 }
 
+// Resume download functionality
+function downloadResume() {
+  const lang = getCurrentLanguage();
+  const resumeUrls = {
+    'en': '/assets/resumes/Michael_Dambock_Resume_EN.pdf',
+    'de': '/assets/resumes/Michael_Dambock_Resume_DE.pdf',
+    'es': '/assets/resumes/Michael_Dambock_Resume_ES.pdf',
+    'pt': '/assets/resumes/Michael_Dambock_Resume_PT.pdf'
+  };
+
+  const resumeUrl = resumeUrls[lang];
+  
+  // Create a temporary link element
+  const link = document.createElement('a');
+  link.href = resumeUrl;
+  link.setAttribute('download', `Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`);
+  link.setAttribute('target', '_blank');
+  
+  // Append to body, click, and remove
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Add event listener to resume download button
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.querySelector('.btn-download');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', downloadResume);
+  }
+});
+
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n
