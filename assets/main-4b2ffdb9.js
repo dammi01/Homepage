@@ -255,7 +255,9 @@ function updateThemeIcon(isDark) {
 }
 
 // Resume download functionality
-function downloadResume() {
+function downloadResume(e) {
+  e.preventDefault(); // Prevent the default anchor behavior
+  
   const lang = getCurrentLanguage();
   const resumeUrls = {
     'en': '/assets/resumes/Michael_Dambock_Resume_EN.pdf',
@@ -270,9 +272,8 @@ function downloadResume() {
   const link = document.createElement('a');
   link.href = resumeUrl;
   link.setAttribute('download', `Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`);
-  link.setAttribute('target', '_blank');
   
-  // Append to body, click, and remove
+  // Trigger download
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -280,7 +281,7 @@ function downloadResume() {
 
 // Add event listener to resume download button
 document.addEventListener('DOMContentLoaded', () => {
-  const downloadBtn = document.querySelector('.btn-download');
+  const downloadBtn = document.getElementById('download-cv');
   if (downloadBtn) {
     downloadBtn.addEventListener('click', downloadResume);
   }
