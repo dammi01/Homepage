@@ -260,7 +260,7 @@ function updateThemeIcon(isDark) {
 // Resume download functionality
 function downloadResume(e) {
   e.preventDefault();
-  const lang = localStorage.getItem('language') || 'en';
+  const lang = localStorage.getItem('preferredLanguage') || 'en';
   window.open(`/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`, '_blank');
 }
 
