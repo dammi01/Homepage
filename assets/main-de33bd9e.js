@@ -259,41 +259,16 @@ function updateThemeIcon(isDark) {
 
 // Resume download functionality
 function downloadResume(e) {
-  console.log('Download button clicked');
-  e.preventDefault(); // Prevent the default anchor behavior
-  
-  const lang = getCurrentLanguage();
-  console.log('Current language:', lang);
-  
-  const resumeUrls = {
-    'en': '/Homepage/assets/resumes/Michael_Dambock_Resume_EN.pdf',
-    'de': '/Homepage/assets/resumes/Michael_Dambock_Resume_DE.pdf',
-    'es': '/Homepage/assets/resumes/Michael_Dambock_Resume_ES.pdf',
-    'pt': '/Homepage/assets/resumes/Michael_Dambock_Resume_PT.pdf'
-  };
-
-  const resumeUrl = resumeUrls[lang];
-  console.log('Attempting to download:', resumeUrl);
-  
-  // Create a temporary link element
-  const link = document.createElement('a');
-  link.href = resumeUrl;
-  link.download = `Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
-  
-  // Trigger download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  e.preventDefault();
+  const lang = localStorage.getItem('language') || 'en';
+  window.open(`/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`, '_blank');
 }
 
 // Add event listener to resume download button
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM Content Loaded');
   const downloadBtn = document.getElementById('download-cv');
-  console.log('Download button found:', !!downloadBtn);
   if (downloadBtn) {
     downloadBtn.addEventListener('click', downloadResume);
-    console.log('Click listener added to download button');
   }
 });
 
