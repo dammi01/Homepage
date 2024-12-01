@@ -256,22 +256,26 @@ function updateThemeIcon(isDark) {
 
 // Resume download functionality
 function downloadResume(e) {
+  console.log('Download button clicked');
   e.preventDefault(); // Prevent the default anchor behavior
   
   const lang = getCurrentLanguage();
+  console.log('Current language:', lang);
+  
   const resumeUrls = {
-    'en': '/assets/resumes/Michael_Dambock_Resume_EN.pdf',
-    'de': '/assets/resumes/Michael_Dambock_Resume_DE.pdf',
-    'es': '/assets/resumes/Michael_Dambock_Resume_ES.pdf',
-    'pt': '/assets/resumes/Michael_Dambock_Resume_PT.pdf'
+    'en': '/Homepage/assets/resumes/Michael_Dambock_Resume_EN.pdf',
+    'de': '/Homepage/assets/resumes/Michael_Dambock_Resume_DE.pdf',
+    'es': '/Homepage/assets/resumes/Michael_Dambock_Resume_ES.pdf',
+    'pt': '/Homepage/assets/resumes/Michael_Dambock_Resume_PT.pdf'
   };
 
   const resumeUrl = resumeUrls[lang];
+  console.log('Attempting to download:', resumeUrl);
   
   // Create a temporary link element
   const link = document.createElement('a');
   link.href = resumeUrl;
-  link.setAttribute('download', `Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`);
+  link.download = `Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
   
   // Trigger download
   document.body.appendChild(link);
@@ -281,10 +285,26 @@ function downloadResume(e) {
 
 // Add event listener to resume download button
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM Content Loaded');
   const downloadBtn = document.getElementById('download-cv');
+  console.log('Download button found:', !!downloadBtn);
   if (downloadBtn) {
     downloadBtn.addEventListener('click', downloadResume);
+    console.log('Click listener added to download button');
   }
+});
+
+function updateResumeLink() {
+  const lang = getCurrentLanguage();
+  const resumeLink = document.querySelector('[data-resume-link]');
+  if (resumeLink) {
+    resumeLink.href = `/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
+  }
+}
+
+// Initialize resume link on page load
+document.addEventListener('DOMContentLoaded', () => {
+  updateResumeLink();
 });
 
 // Initialize everything when the DOM is loaded
@@ -310,5 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('languageChanged', () => {
     // Reinitialize components that depend on translations
     initTypedJs();
+    updateResumeLink();
   });
 });
