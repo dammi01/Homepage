@@ -298,7 +298,8 @@ function updateResumeLink() {
   const lang = getCurrentLanguage();
   const resumeLink = document.querySelector('[data-resume-link]');
   if (resumeLink) {
-    resumeLink.href = `/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
+    // Use relative path starting with ./
+    resumeLink.href = `./assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
   }
 }
 
