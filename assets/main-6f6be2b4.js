@@ -104,6 +104,9 @@ function initLanguageSelector() {
       const buttonText = languageButton.querySelector('span');
       buttonText.textContent = i18n.t('languageMenu');
 
+      // Update resume link for new language
+      updateResumeLink();
+
       // Reinitialize Typed.js with new language
       initTypedJs();
     });
@@ -294,11 +297,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function getCurrentLanguage() {
+  return localStorage.getItem('language') || 'en';
+}
+
 function updateResumeLink() {
   const lang = getCurrentLanguage();
   const resumeLink = document.querySelector('[data-resume-link]');
   if (resumeLink) {
     resumeLink.href = `/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
+    console.log('Updated resume link for language:', lang);
   }
 }
 
