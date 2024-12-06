@@ -144,10 +144,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .description {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-light);
-  margin-bottom: 0;
-  line-height: 1.2;
+  white-space: pre-line;
+  margin: 15px 0;
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.4;
+  max-width: none;
+  text-align: left;
+  width: 100%;
+  padding: 0;
 }
 
 [data-theme="dark"] .subtitle,
@@ -358,19 +363,20 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Home Section */
 .home {
+  padding-top: calc(var(--header-height) + 2rem);  /* Account for header height plus some space */
   min-height: 100vh;
-  padding-top: calc(var(--spacing-16) * 0.7);
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .home-content {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--spacing-4);
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding-top: calc(var(--header-height) + 2rem);
-  align-items: end;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 .home-text {
@@ -378,6 +384,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding-right: 0;
 }
 
 .home-text .btn-box {
@@ -448,18 +456,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .home-img {
   display: flex;
-  align-items: flex-end;
   justify-content: center;
-  padding-bottom: 3rem;
+  align-items: center;
+  width: 90%;
+  margin-left: -2rem;
 }
 
 .home-img img {
-  width: 200px;
-  height: auto;
-  display: block;
+  width: 300px;
+  height: 300px;
   border: 3px solid #0ef;
-  border-radius: 51% 49% 48% 52% / 49% 49% 51% 51%;
-  animation: borderAnimation 5s linear infinite;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: borderAnimation 8s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
@@ -473,16 +481,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes borderAnimation {
   0% {
-    border-radius: 51% 49% 48% 52% / 49% 49% 51% 51%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
   35% {
-    border-radius: 60% 40% 57% 43% / 40% 54% 46% 60%;
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
   }
   65% {
-    border-radius: 67% 33% 68% 32% / 27% 70% 30% 73%;
+    border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%;
   }
   100% {
-    border-radius: 51% 49% 48% 52% / 49% 49% 51% 51%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }
 

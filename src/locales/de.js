@@ -12,7 +12,9 @@ export default {
   name: "Michael Dambock",
   title: "Dateningenieur, Systemanalytiker, Backend-Entwickler, Lösungsanbieter",
   underConstruction: "Seite im Aufbau!",
-  description: `Mit über 20 Jahren Erfahrung in der IT bin ich ein begeisterter Entwickler, der sich derzeit auf Data Engineering und KI-gesteuerte Lösungen spezialisiert. Mein Ziel ist es, meinen Hintergrund in Programmierung, Projektmanagement und Prozess-/Datenanalyse zu nutzen, um innovative Systeme zu schaffen, die nicht nur technologische Fähigkeiten verbessern, sondern auch erheblich Kosten senken und Zeit für Organisationen sparen.\n\nIch setze mich dafür ein, skalierbare und effiziente Datenpipelines zu entwickeln, die eine nahtlose Integration von KI-Technologien gewährleisten. Indem ich mich auf die wesentlichen Prozesse der Datenerfassung, -bereinigung, -transformation und -integration konzentriere, möchte ich Unternehmen die Werkzeuge an die Hand geben, die sie benötigen, um schnell und effektiv fundierte Entscheidungen zu treffen. Mein Bestreben ist es, Unternehmen dabei zu helfen, die Komplexität des Datenmanagements zu bewältigen und gleichzeitig ihre operativen Ziele effizienter zu erreichen.`,
+  description: `Mit über 20 Jahren Erfahrung in der IT bin ich ein begeisterter Entwickler, der sich derzeit auf Data Engineering und KI-gesteuerte Lösungen spezialisiert. Mein Ziel ist es, meinen Hintergrund in Programmierung, Projektmanagement und Prozess-/Datenanalyse zu nutzen, um innovative Systeme zu schaffen, die nicht nur technologische Fähigkeiten verbessern, sondern auch erheblich Kosten senken und Zeit für Organisationen sparen.
+
+Ich setze mich dafür ein, skalierbare und effiziente Datenpipelines zu entwickeln, die eine nahtlose Integration von KI-Technologien gewährleisten. Indem ich mich auf die wesentlichen Prozesse der Datenerfassung, -bereinigung, -transformation und -integration konzentriere, möchte ich Unternehmen die Werkzeuge an die Hand geben, die sie benötigen, um schnell und effektiv fundierte Entscheidungen zu treffen. Mein Bestreben ist es, Unternehmen dabei zu helfen, die Komplexität des Datenmanagements zu bewältigen und gleichzeitig ihre operativen Ziele effizienter zu erreichen.`,
   download: "Lebenslauf herunterladen",
   contact: "Kontaktieren Sie mich",
   aboutHeading: "Über Mich",
@@ -34,13 +36,12 @@ Meine Expertise umfasst die Erstellung eines kompletten Telemarketing-Systems in
 und Programmierung elektronischer Zeiterfassungssysteme mit Visual Basic, C und SQL sowie Programmierung,
 Anpassung und Implementierung von Kundenservicesystemen (CRM) unter Verwendung von BMC AR-System und SQL-Datenbanken.
 Nach einer Zeit in der Verwaltung, in der ich unter anderem Managementprozesse optimiert und digitalisiert habe,
-kehre ich mit einem neuen Ziel in die IT zurück: Mein gesammeltes Wissen nun in Data Engineering, Data
-Analysis, Data Alchemy und KI-gesteuerte Entwicklung einzubringen und so zur Schaffung innovativer Lösungen beizutragen.
+kehre ich mit einem neuen Ziel in die IT zurück: Mein gesammeltes Wissen nun in Data Engineering und KI-gesteuerte Entwicklung einzubringen und so zur Schaffung innovativer Lösungen beizutragen, die Zeit und Kosten reduzieren.
 
 Meine Kompetenzen umfassen:
 • Design, Programmierung und Implementierung von Lösungen
 • Analyse und Implementierung von Großprojekten
-• IT-Support, Telemarketing und Portfolioentwicklung
+• IT-Support, Vertrieb und Telemarketing
 
 Ich suche neue Herausforderungen, die es mir ermöglichen, meine Fähigkeiten in der Problemlösung, im analytischen Denken
 und in der Detailgenauigkeit einzusetzen. Ich freue mich darauf, meine umfangreiche Erfahrung einzubringen und zum

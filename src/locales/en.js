@@ -12,7 +12,9 @@ export default {
   name: "Michael Dambock",
   title: "Data Engineer, System Analyst, Backend Developer, Solution Provider",
   underConstruction: "Under construction!",
-  description: `With over 20 years of experience in IT, I am an enthusiastic Developer currently specializing in Data Engineering and AI-driven solutions. My goal is to leverage my background in programming, project management, and process/data analysis to create innovative systems that not only enhance technological capabilities but also significantly reduce costs and save time for organizations.\n\nI am committed to building scalable and efficient data pipelines that ensure seamless integration of AI technologies. By focusing on the essential processes of data acquisition, cleaning, transformation, and integration, I aim to provide businesses with the tools they need to make informed decisions quickly and effectively. My aspiration is to help companies navigate the complexities of data management while achieving their operational goals more efficiently.`,
+  description: `With over 20 years of experience in IT, I am an enthusiastic Developer currently specializing in Data Engineering and AI-driven solutions. My goal is to leverage my background in programming, project management, and process/data analysis to create innovative systems that not only enhance technological capabilities but also significantly reduce costs and save time for organizations.
+
+I am committed to building scalable and efficient data pipelines that ensure seamless integration of AI technologies. By focusing on the essential processes of data acquisition, cleaning, transformation, and integration, I aim to provide businesses with the tools they need to make informed decisions quickly and effectively. My aspiration is to help companies navigate the complexities of data management while achieving their operational goals more efficiently.`,
   download: "Download CV",
   contact: "Contact Me",
   aboutHeading: "About Me",
@@ -35,13 +37,12 @@ My expertise encompasses the creation of a complete telemarketing system in CA-Q
 and programming of electronic time register / clocks using Visual Basic, C, and SQL, as well as programming,
 adaptation, and implementation of customer service systems (CRM) using BMC AR-System and SQL databases.
 After a period in administration, where, among others, I optimized and digitalized management processes, I am
-returning to the IT field with a new purpose: to apply my accumulated knowledge now in Data Engineering, Data
-Analysis, Data Alchemy and AI-driven development, thus contributing to create innovative solutions.
+returning to the IT field with a new purpose: to apply my accumulated knowledge now in Data Engineering and AI-driven development, thus contributing to create innovative solutions, reducing time and costs.
 
 My competencies include:
 • Design, programming, and implementation of solutions
 • Analysis and implementation of large-scale projects
-• IT support, Telemarketing and portfolio development
+• IT support, Sales and Telemarketing
 
 I am seeking new challenges that allow me to utilize my skills in problem-solving, analytical thinking,
 and attention to detail. I am enthusiastic about contributing my vast experience, collaborating with

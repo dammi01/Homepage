@@ -13,7 +13,9 @@ export default {
   name: "Michael Dambock",
   title: "Ingeniero de Datos, Analista de Sistemas, Desarrollador Backend, Proveedor de Soluciones",
   underConstruction: "¡En construcción!",
-  description: `Con más de 20 años de experiencia en TI, soy un desarrollador entusiasta que actualmente se especializa en Ingeniería de Datos y soluciones impulsadas por IA. Mi objetivo es aprovechar mi experiencia en programación, gestión de proyectos y análisis de procesos/datos para crear sistemas innovadores que no solo mejoren las capacidades tecnológicas, sino que también reduzcan significativamente los costos y ahorren tiempo para las organizaciones.\n\nEstoy comprometido a construir pipelines de datos escalables y eficientes que aseguren una integración fluida de tecnologías de IA. Al centrarme en los procesos esenciales de adquisición, limpieza, transformación e integración de datos, aspiro a proporcionar a las empresas las herramientas necesarias para tomar decisiones informadas de manera rápida y efectiva. Mi aspiración es ayudar a las empresas a navegar por las complejidades de la gestión de datos mientras logran sus objetivos operativos de manera más eficiente.`,
+  description: `Con más de 20 años de experiencia en TI, soy un desarrollador entusiasta que actualmente se especializa en Ingeniería de Datos y soluciones impulsadas por IA. Mi objetivo es aprovechar mi experiencia en programación, gestión de proyectos y análisis de procesos/datos para crear sistemas innovadores que no solo mejoren las capacidades tecnológicas, sino que también reduzcan significativamente los costos y ahorren tiempo para las organizaciones.
+
+Estoy comprometido a construir pipelines de datos escalables y eficientes que aseguren una integración fluida de tecnologías de IA. Al centrarme en los procesos esenciales de adquisición, limpieza, transformación e integración de datos, aspiro a proporcionar a las empresas las herramientas necesarias para tomar decisiones informadas de manera rápida y efectiva. Mi aspiración es ayudar a las empresas a navegar por las complejidades de la gestión de datos mientras logran sus objetivos operativos de manera más eficiente.`,
   download: "Descargar CV",
   contact: "Contáctame",
   aboutHeading: "Sobre Mí",
@@ -35,13 +37,12 @@ Mi experiencia abarca la creación de un sistema completo de telemarketing en CA
 y programación de registros/relojes de tiempo electrónicos usando Visual Basic, C y SQL, así como programación,
 adaptación e implementación de sistemas de atención al cliente (CRM) utilizando BMC AR-System y bases de datos SQL.
 Después de un período en administración, donde, entre otros, optimicé y digitalicé procesos de gestión, estoy
-volviendo al campo de TI con un nuevo propósito: aplicar mi conocimiento acumulado ahora en Ingeniería de Datos,
-Análisis de Datos, Alquimia de Datos y desarrollo impulsado por IA, contribuyendo así a crear soluciones innovadoras.
+volviendo al campo de TI con un nuevo propósito: aplicar mi conocimiento acumulado ahora en Ingeniería de Datos y desarrollo impulsado por IA, contribuyendo así a crear soluciones innovadoras, reduciendo tiempo y costos.
 
 Mis competencias incluyen:
 • Diseño, programación e implementación de soluciones
 • Análisis e implementación de proyectos a gran escala
-• Soporte de TI, Telemarketing y desarrollo de portafolio
+• Soporte de TI, Ventas y Telemarketing
 
 Busco nuevos desafíos que me permitan utilizar mis habilidades en resolución de problemas, pensamiento analítico
 y atención al detalle. Estoy entusiasmado por aportar mi vasta experiencia, colaborando con

@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   root: 'src',
   base: '/Homepage/',
+  publicDir: '../public',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
@@ -12,6 +13,7 @@ export default defineConfig({
         main: '/index.html',
       },
     },
+    assetsInclude: ['**/*.pdf'],
   },
   server: {
     open: true,

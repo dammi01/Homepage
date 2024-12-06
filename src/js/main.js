@@ -104,6 +104,9 @@ function initLanguageSelector() {
       const buttonText = languageButton.querySelector('span');
       buttonText.textContent = i18n.t('languageMenu');
 
+      // Update resume link for new language
+      updateResumeLink();
+
       // Reinitialize Typed.js with new language
       initTypedJs();
     });
@@ -254,6 +257,39 @@ function updateThemeIcon(isDark) {
   themeIcon.className = isDark ? 'bx bx-moon' : 'bx bx-sun';
 }
 
+// Resume download functionality
+function downloadResume(e) {
+  e.preventDefault();
+  const lang = localStorage.getItem('preferredLanguage') || 'en';
+  window.open(`/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`, '_blank');
+}
+
+// Add event listener to resume download button
+document.addEventListener('DOMContentLoaded', () => {
+  const downloadBtn = document.getElementById('download-cv');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', downloadResume);
+  }
+});
+
+function getCurrentLanguage() {
+  return localStorage.getItem('language') || 'en';
+}
+
+function updateResumeLink() {
+  const lang = getCurrentLanguage();
+  const resumeLink = document.querySelector('[data-resume-link]');
+  if (resumeLink) {
+    resumeLink.href = `/Homepage/assets/resumes/Michael_Dambock_Resume_${lang.toUpperCase()}.pdf`;
+    console.log('Updated resume link for language:', lang);
+  }
+}
+
+// Initialize resume link on page load
+document.addEventListener('DOMContentLoaded', () => {
+  updateResumeLink();
+});
+
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n
@@ -277,5 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('languageChanged', () => {
     // Reinitialize components that depend on translations
     initTypedJs();
+    updateResumeLink();
   });
 });

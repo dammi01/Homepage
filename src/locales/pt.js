@@ -11,7 +11,9 @@ export default {
   navContact: "Contato",
   name: "Michael Dambock",
   title: "Engenheiro de Dados, Analista de Sistemas, Desenvolvedor Backend, Provedor de Soluções",
-  description: `Com mais de 20 anos de experiência em TI, sou um desenvolvedor entusiasmado que atualmente está se especializando em Engenharia de Dados e soluções impulsionadas por IA. Meu objetivo é aproveitar meu conhecimento em programação, gerenciamento de projetos e análise de processos/dados para criar sistemas inovadores que não apenas aprimorem as capacidades tecnológicas, mas também reduzam significativamente os custos e economizem tempo para as organizações.\n\nEstou comprometido em construir pipelines de dados escaláveis e eficientes que garantam a integração perfeita das tecnologias de IA. Ao focar nos processos essenciais de aquisição, limpeza, transformação e integração de dados, pretendo fornecer às empresas as ferramentas necessárias para tomar decisões informadas de forma rápida e eficaz. Minha aspiração é ajudar as empresas a navegar nas complexidades da gestão de dados enquanto alcançam seus objetivos operacionais de maneira mais eficiente.`,
+  description: `Com mais de 20 anos de experiência em TI, sou um desenvolvedor entusiasmado que atualmente está se especializando em Engenharia de Dados e soluções impulsionadas por IA. Meu objetivo é aproveitar meu conhecimento em programação, gerenciamento de projetos e análise de processos/dados para criar sistemas inovadores que não apenas aprimorem as capacidades tecnológicas, mas também reduzam significativamente os custos e economizem tempo para as organizações.
+
+Estou comprometido em construir pipelines de dados escaláveis e eficientes que garantam a integração perfeita das tecnologias de IA. Ao focar nos processos essenciais de aquisição, limpeza, transformação e integração de dados, pretendo fornecer às empresas as ferramentas necessárias para tomar decisões informadas de forma rápida e eficaz. Minha aspiração é ajudar as empresas a navegar nas complexidades da gestão de dados enquanto alcançam seus objetivos operacionais de maneira mais eficiente.`,
   download: "Baixar Currículo",
   contact: "Contate-me",
   aboutHeading: "Sobre Mim",
@@ -33,13 +35,12 @@ Minha expertise abrange a criação de um sistema completo de telemarketing em C
 e programação de registros/relógios de ponto eletrônicos usando Visual Basic, C e SQL, bem como programação,
 adaptação e implementação de sistemas de atendimento ao cliente (CRM) utilizando BMC AR-System e bancos de dados SQL.
 Após um período na administração, onde, entre outros, otimizei e digitalizei processos de gestão, estou
-retornando à área de TI com um novo propósito: aplicar meu conhecimento acumulado agora em Engenharia de Dados,
-Análise de Dados, Alquimia de Dados e desenvolvimento orientado por IA, contribuindo assim para criar soluções inovadoras.
+retornando à área de TI com um novo propósito: aplicar meu conhecimento acumulado agora em Engenharia de Dados e desenvolvimento orientado à IA, contribuindo assim para criar soluções inovadoras, reduzindo tempo e custos.
 
 Minhas competências incluem:
 • Design, programação e implementação de soluções
 • Análise e implementação de projetos de grande escala
-• Suporte de TI, Telemarketing e desenvolvimento de portfólio
+• Suporte de TI, Vendas e Telemarketing
 
 Busco novos desafios que me permitam utilizar minhas habilidades em resolução de problemas, pensamento analítico
 e atenção aos detalhes. Estou entusiasmado em contribuir com minha vasta experiência, colaborando com
