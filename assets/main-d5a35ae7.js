@@ -192,7 +192,7 @@ function initContactForm() {
 
   // Initialize EmailJS
   (function() {
-    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your EmailJS public key
+    emailjs.init("upNg11-NKtYgaKIbd");
   })();
 
   const submitButton = form.querySelector('button[type="submit"]');
@@ -215,7 +215,7 @@ function initContactForm() {
     };
 
     // Send email using EmailJS
-    emailjs.send('default_service', 'template_id', templateParams)
+    emailjs.send('service_vffyv1s', 'template_cpu8xrf', templateParams)
       .then(function() {
         // Show success message
         showNotification('Message sent successfully!', 'success');
