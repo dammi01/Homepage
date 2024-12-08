@@ -873,6 +873,34 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
 }
 
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0066cc;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+  background-color: #0052a3;
+  transform: translateY(-2px);
+}
+
+.portfolio-link i {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.portfolio-link span {
+  font-weight: 500;
+  color: #ffffff;
+}
+
 [data-theme="light"] .portfolio-content .heading {
   color: var(--color-primary);
 }
@@ -1327,4 +1355,52 @@ section {
   justify-content: center;
   gap: 1rem;
   margin-top: 1.5rem;
+}
+
+/* Notification styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification.success {
+  background-color: #4CAF50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+/* Contact form loading state */
+.contact-form button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.version-number {
+  color: #0066cc;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .header-left {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
 }

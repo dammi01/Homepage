@@ -190,12 +190,85 @@ function initContactForm() {
     <button type="submit" class="btn btn-primary">Send Message</button>
   `;
 
-  form.addEventListener('submit', async (e) => {
+  // Initialize EmailJS
+  (function() {
+    emailjs.init("upNg11-NKtYgaKIbd");
+  })();
+
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log('Form submitted');
+    
+    // Disable submit button and show loading state
+    submitButton.disabled = true;
+    const originalText = submitButton.textContent;
+    submitButton.textContent = '...';
+
+    // Get form data
+    const templateParams = {
+      from_name: document.getElementById('name').value,
+      from_email: document.getElementById('email').value,
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('message').value,
+      to_email: 'mdambock@gmail.com'
+    };
+
+    // Send email using EmailJS
+    emailjs.send('service_vffyv1s', 'template_cpu8xrf', templateParams)
+      .then(function() {
+        // Show success message
+        showNotification('Message sent successfully!', 'success');
+        
+        // Reset form
+        form.reset();
+      })
+      .catch(function(error) {
+        // Show error message
+        showNotification('Failed to send message. Please try again.', 'error');
+        console.error('EmailJS error:', error);
+      })
+      .finally(function() {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      });
   });
 }
+
+// Notification system
+function showNotification(message, type) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+
+  // Add to document
+  document.body.appendChild(notification);
+
+  // Add show class for animation
+  setTimeout(() => notification.classList.add('show'), 10);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// Smooth scroll to contact section
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
 
 // Intersection Observer for animations
 function initAnimations() {
