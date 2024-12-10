@@ -252,6 +252,16 @@
             <div class="portfolio-overlay">
               <h3 data-translate="portfolioItems.dashboards.title">Dashboards</h3>
               <p data-translate="portfolioItems.dashboards.description">Interactive business intelligence dashboards created with PowerBI, providing real-time insights and data visualization for informed decision-making.</p>
+              <div class="dashboard-links">
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiODMxNDJiNzAtZjkwMi00Y2YyLTg1ODgtZDNlNGZmNDc5MjQzIiwidCI6Ijk4NTJiYTkzLThjM2QtNGQwNi1hYTc1LTU5ZmY1MDYwZmExNSJ9" target="_blank" class="portfolio-link">
+                  <i class='bx bx-line-chart'></i>
+                  <span>View Live Dashboard</span>
+                </a>
+                <button class="portfolio-link view-dashboard-btn" data-dashboard="revenue">
+                  <i class='bx bx-fullscreen'></i>
+                  <span>View Details</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -286,6 +296,38 @@
       </form>
     </section>
   </main>
+
+  <!-- Dashboard Modal -->
+  <div id="dashboardModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="dashboard-modal-content">
+        <div class="dashboard-preview">
+          <h2>Revenue, Cost & Margin Dashboard</h2>
+          <div class="dashboard-iframe-container">
+            <iframe title="Receita_Custo_Margem" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODMxNDJiNzAtZjkwMi00Y2YyLTg1ODgtZDNlNGZmNDc5MjQzIiwidCI6Ijk4NTJiYTkzLThjM2QtNGQwNi1hYTc1LTU5ZmY1MDYwZmExNSJ9" frameborder="0" allowFullScreen="true"></iframe>
+          </div>
+        </div>
+        <div class="dashboard-info">
+          <div class="dashboard-description">
+            <h3>About this Dashboard</h3>
+            <p>Interactive Power BI dashboard showcasing revenue, cost, and margin analysis. Features real-time data visualization and detailed business metrics.</p>
+          </div>
+          <div class="dashboard-links">
+            <a href="/assets/dash/Receita_Custo_Margem.pdf" target="_blank" class="dashboard-link">
+              <i class='bx bxs-file-pdf'></i>
+              <span>Download PDF Version</span>
+            </a>
+          </div>
+          <div class="qr-code">
+            <h3>Mobile Access</h3>
+            <img src="/assets/dash/Receita_Custo_Margem.jpg" alt="Dashboard QR Code" width="150" height="150">
+            <p>Scan to view on mobile</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer-content">

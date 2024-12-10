@@ -363,6 +363,32 @@ document.addEventListener('DOMContentLoaded', () => {
   updateResumeLink();
 });
 
+// Dashboard modal functionality
+function initDashboardModal() {
+  const modal = document.getElementById('dashboardModal');
+  const btns = document.querySelectorAll('.view-dashboard-btn');
+  const closeBtn = document.querySelector('.close-modal');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n
@@ -381,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initAnimations();
   updateCopyright();
+  initDashboardModal();
 
   // Listen for language changes
   window.addEventListener('languageChanged', () => {
