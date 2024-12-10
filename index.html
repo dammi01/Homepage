@@ -23,8 +23,8 @@
   
   
   <title>Michael Dambock - Portfolio</title>
-  <script type="module" crossorigin src="/Homepage/assets/main-726a305f.js"></script>
-  <link rel="stylesheet" href="/Homepage/assets/index-b15c7ee9.css">
+  <script type="module" crossorigin src="/Homepage/assets/main-bc4eea12.js"></script>
+  <link rel="stylesheet" href="/Homepage/assets/index-945528c8.css">
 </head>
 <body>
   <!-- Header Section -->
@@ -32,39 +32,27 @@
     <div class="header-left">
       <img src="/Homepage/assets/LOGO_v1-6c9a5721.png" alt="Michael Dambock Logo" class="logo-img" width="50" height="50" loading="eager" />
       <span class="header-name">Michael Dambock</span>
-      <span class="construction-notice" data-translate="underConstruction">This website is currently under construction.</span>
       <span class="version-number">v1.0.7</span>
+      <span class="construction-notice" data-translate="underConstruction">This website is currently under construction.</span>
     </div>
 
     <div class="header-right">
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-        <i class='bx bx-sun'></i>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="bx bx-moon"></i>
       </button>
+      
       <div class="language-selector">
-        <button class="language-button" aria-label="Select Language">
-          <span data-translate="languageMenu">Language</span>
-          <i class='bx bx-chevron-down'></i>
-        </button>
-        <ul class="language-dropdown">
-          <li><button data-lang="en">English</button></li>
-          <li><button data-lang="de">Deutsch</button></li>
-          <li><button data-lang="pt">Português</button></li>
-          <li><button data-lang="es">Español</button></li>
-        </ul>
+        <select id="languageSelect" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+          <option value="pt">PT</option>
+        </select>
       </div>
-      <nav class="nav">
-        <button class="menu-toggle" aria-label="Toggle Menu">
-          <i class='bx bx-menu'></i>
-        </button>
-        <ul class="navbar">
-          <li><a href="#home" data-translate="navHome">Home</a></li>
-          <li><a href="#about" data-translate="navAbout">About</a></li>
-          <li><a href="#highlights" data-translate="navHighlights">Highlights</a></li>
-          <li><a href="#skills" data-translate="navSkills">Skills</a></li>
-          <li><a href="#portfolio" data-translate="navPortfolio">Portfolio</a></li>
-          <li><a href="#contact" data-translate="navContact">Contact</a></li>
-        </ul>
-      </nav>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
     </div>
   </header>
 
