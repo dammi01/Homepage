@@ -87,29 +87,40 @@ function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
+  let closeDropdownTimeout;
 
-  // Toggle dropdown
-  languageButton.addEventListener('click', () => {
-    languageDropdown.classList.toggle('show');
+  // Open dropdown on click
+  languageButton.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent event from bubbling
+    languageDropdown.classList.toggle('show'); // Toggle dropdown visibility
+    clearTimeout(closeDropdownTimeout); // Clear any existing timeout
   });
 
   // Handle language selection
   languageDropdown.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
       const lang = button.getAttribute('data-lang');
-      i18n.setLanguage(lang);
-      languageDropdown.classList.remove('show');
-      
-      // Update button text
+      i18n.setLanguage(lang); // Update language
       const buttonText = languageButton.querySelector('span');
-      buttonText.textContent = i18n.t('languageMenu');
+      buttonText.textContent = i18n.t('languageMenu'); // Update button text
+      updateResumeLink(); // Update resume link for new language
+      initTypedJs(); // Reinitialize Typed.js with new language
 
-      // Update resume link for new language
-      updateResumeLink();
-
-      // Reinitialize Typed.js with new language
-      initTypedJs();
+      // Optionally close the dropdown immediately after selection
+      languageDropdown.classList.remove('show');
     });
+  });
+
+  // Close dropdown with a delay when mouse leaves the menu area
+  languageSelector.addEventListener('mouseleave', () => {
+    closeDropdownTimeout = setTimeout(() => {
+      languageDropdown.classList.remove('show');
+    }, 1000); // Delay of 1 second
+  });
+
+  // Prevent closing the dropdown when hovering over it
+  languageDropdown.addEventListener('mouseenter', () => {
+    clearTimeout(closeDropdownTimeout); // Clear the timeout if hovering over the dropdown
   });
 
   // Close dropdown when clicking outside
@@ -119,6 +130,7 @@ function initLanguageSelector() {
     }
   });
 }
+
 
 // Skills section
 function initSkills() {
