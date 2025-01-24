@@ -1,4 +1,3 @@
-import Typed from 'typed.js';
 import i18n from './i18n.js';
 
 // Skills data
@@ -29,27 +28,6 @@ const skillsData = {
 const portfolioData = [
   // Add portfolio items here if needed
 ];
-
-// Initialize Typed.js
-let typedInstance = null;  // Add this line to store the Typed instance
-
-function initTypedJs() {
-  // Destroy existing instance if it exists
-  if (typedInstance) {
-    typedInstance.destroy();
-  }
-
-  const options = {
-    strings: [i18n.t('title')],
-    typeSpeed: 80,
-    backSpeed: 50,
-    backDelay: 8000,
-    startDelay: 1000,
-    loop: true
-  };
-
-  typedInstance = new Typed('.typed-text', options);
-}
 
 // Header scroll effect
 function initHeaderScroll() {
@@ -416,7 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
 
   // Initialize all components
-  initTypedJs();
   initHeaderScroll();
   initMobileMenu();
   initLanguageSelector();
@@ -430,7 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Listen for language changes
   window.addEventListener('languageChanged', () => {
     // Reinitialize components that depend on translations
-    initTypedJs();
     updateResumeLink();
   });
 });
