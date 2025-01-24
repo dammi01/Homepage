@@ -89,11 +89,34 @@ function initLanguageSelector() {
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
   let closeDropdownTimeout;
 
-  // Open dropdown on click
+  // Open/close dropdown function
+  function toggleDropdown() {
+    languageDropdown.classList.toggle('show');
+    clearTimeout(closeDropdownTimeout);
+  }
+
+  // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent event from bubbling
-    languageDropdown.classList.toggle('show'); // Toggle dropdown visibility
-    clearTimeout(closeDropdownTimeout); // Clear any existing timeout
+    toggleDropdown(); // Toggle dropdown visibility
+  });
+
+  // Keep the language dropdown open when hovering over it
+  languageDropdown.addEventListener('mouseenter', () => {
+    clearTimeout(closeDropdownTimeout); // Clear timeout to keep dropdown open
+  });
+
+  languageDropdown.addEventListener('mouseleave', () => {
+    closeDropdownTimeout = setTimeout(() => {
+      languageDropdown.classList.remove('show'); // Close dropdown after a delay
+    }, 300);
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target) && languageDropdown.classList.contains('show')) {
+      languageDropdown.classList.remove('show'); // Close dropdown if it's open
+    }
   });
 
   // Handle language selection
@@ -110,38 +133,7 @@ function initLanguageSelector() {
       languageDropdown.classList.remove('show');
     });
   });
-
-  // Close dropdown with a delay when mouse leaves the menu area
-  languageSelector.addEventListener('mouseleave', () => {
-    closeDropdownTimeout = setTimeout(() => {
-      languageDropdown.classList.remove('show');
-    }, 1000); // Delay of 1 second
-  });
-
-  // Prevent closing the dropdown when hovering over it
-  languageDropdown.addEventListener('mouseenter', () => {
-    clearTimeout(closeDropdownTimeout); // Clear the timeout if hovering over the dropdown
-  });
-
-  // Keep the language dropdown open when hovering over it
-  languageDropdown.addEventListener('mouseenter', () => {
-    clearTimeout(closeDropdownTimeout); // Clear timeout to keep dropdown open
-  });
-
-  languageDropdown.addEventListener('mouseleave', () => {
-    closeDropdownTimeout = setTimeout(() => {
-      languageDropdown.classList.remove('show'); // Close dropdown after a delay
-    }, 300); // Adjust the delay as needed
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target)) {
-      languageDropdown.classList.remove('show');
-    }
-  });
 }
-
 
 // Skills section
 function initSkills() {
