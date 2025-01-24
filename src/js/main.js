@@ -65,7 +65,6 @@ function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
-  let closeDropdownTimeout;
 
   // Open/close dropdown function
   function toggleDropdown() {
@@ -96,17 +95,6 @@ function initLanguageSelector() {
       languageDropdown.classList.remove('show'); // Close dropdown if it's open
       console.log('Dropdown closed by clicking outside.');
     }
-  });
-
-  // Prevent closing dropdown when hovering over it
-  languageDropdown.addEventListener('mouseenter', () => {
-    clearTimeout(closeDropdownTimeout); // Clear timeout to keep dropdown open
-  });
-
-  languageDropdown.addEventListener('mouseleave', () => {
-    closeDropdownTimeout = setTimeout(() => {
-      languageDropdown.classList.remove('show'); // Close dropdown after a delay
-    }, 300);
   });
 }
 
