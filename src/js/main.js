@@ -87,36 +87,16 @@ function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
-  let closeDropdownTimeout;
 
   // Open/close dropdown function
   function toggleDropdown() {
     languageDropdown.classList.toggle('show');
-    clearTimeout(closeDropdownTimeout);
   }
 
   // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent event from bubbling
     toggleDropdown(); // Toggle dropdown visibility
-  });
-
-  // Keep the language dropdown open when hovering over it
-  languageDropdown.addEventListener('mouseenter', () => {
-    clearTimeout(closeDropdownTimeout); // Clear timeout to keep dropdown open
-  });
-
-  languageDropdown.addEventListener('mouseleave', () => {
-    closeDropdownTimeout = setTimeout(() => {
-      languageDropdown.classList.remove('show'); // Close dropdown after a delay
-    }, 300);
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target) && languageDropdown.classList.contains('show')) {
-      languageDropdown.classList.remove('show'); // Close dropdown if it's open
-    }
   });
 
   // Handle language selection
@@ -132,6 +112,13 @@ function initLanguageSelector() {
       // Optionally close the dropdown immediately after selection
       languageDropdown.classList.remove('show');
     });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target) && languageDropdown.classList.contains('show')) {
+      languageDropdown.classList.remove('show'); // Close dropdown if it's open
+    }
   });
 }
 
