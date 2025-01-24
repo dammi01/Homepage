@@ -123,6 +123,17 @@ function initLanguageSelector() {
     clearTimeout(closeDropdownTimeout); // Clear the timeout if hovering over the dropdown
   });
 
+  // Keep the language dropdown open when hovering over it
+  languageDropdown.addEventListener('mouseenter', () => {
+    clearTimeout(closeDropdownTimeout); // Clear timeout to keep dropdown open
+  });
+
+  languageDropdown.addEventListener('mouseleave', () => {
+    closeDropdownTimeout = setTimeout(() => {
+      languageDropdown.classList.remove('show'); // Close dropdown after a delay
+    }, 300); // Adjust the delay as needed
+  });
+
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     if (!languageSelector.contains(e.target)) {
