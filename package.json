@@ -1,6 +1,6 @@
 {
   "name": "michael-dambock-portfolio",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Michael Dambock's Professional Portfolio",
   "main": "index.js",
   "scripts": {
