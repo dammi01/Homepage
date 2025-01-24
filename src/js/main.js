@@ -390,7 +390,10 @@ function initDashboardModal() {
 // Function to fetch and display version number
 function displayVersion() {
   fetch('./package.json') // Updated to relative path
-    .then(response => response.json())
+    .then(response => {
+      console.log('Fetch response:', response); // Log the response
+      return response.json();
+    })
     .then(data => {
       const versionNumberElement = document.getElementById('version-number');
       versionNumberElement.textContent = data.version; // Set the version number
