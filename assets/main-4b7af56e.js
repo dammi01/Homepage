@@ -91,6 +91,7 @@ function initLanguageSelector() {
   // Open/close dropdown function
   function toggleDropdown() {
     languageDropdown.classList.toggle('show');
+    console.log('Dropdown toggled:', languageDropdown.classList.contains('show') ? 'Open' : 'Closed');
   }
 
   // Open dropdown on button click
@@ -112,8 +113,9 @@ function initLanguageSelector() {
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target)) {
+    if (!languageSelector.contains(e.target) && languageDropdown.classList.contains('show')) {
       languageDropdown.classList.remove('show'); // Close dropdown if it's open
+      console.log('Dropdown closed by clicking outside.');
     }
   });
 }
