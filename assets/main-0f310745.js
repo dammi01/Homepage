@@ -102,15 +102,11 @@ function initLanguageSelector() {
   // Handle language selection
   languageDropdown.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', (event) => {
-      const lang = button.getAttribute('data-lang');
-      i18n.setLanguage(lang); // Update language
-      const buttonText = languageButton.querySelector('span');
-      buttonText.textContent = i18n.t('languageMenu'); // Update button text
-      updateResumeLink(); // Update resume link for new language
-      initTypedJs(); // Reinitialize Typed.js with new language
-
-      // Optionally close the dropdown immediately after selection
-      languageDropdown.classList.remove('show');
+      const selectedLanguage = event.target.getAttribute('data-lang');
+      console.log(`Language selected: ${selectedLanguage}`); // Example action
+      i18n.setLanguage(selectedLanguage); // Call setLanguage method
+      languageDropdown.classList.remove('show'); // Close dropdown after selection
+      console.log('Dropdown closed after selection.');
     });
   });
 
