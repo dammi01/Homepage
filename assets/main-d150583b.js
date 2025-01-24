@@ -116,7 +116,7 @@ function initLanguageSelector() {
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target) && languageDropdown.classList.contains('show')) {
+    if (!languageSelector.contains(e.target)) {
       languageDropdown.classList.remove('show'); // Close dropdown if it's open
     }
   });
