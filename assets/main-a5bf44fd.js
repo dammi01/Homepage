@@ -391,6 +391,21 @@ function initDashboardModal() {
   });
 }
 
+// Function to fetch and display version number
+function displayVersion() {
+  fetch('/package.json') 
+    .then(response => response.json())
+    .then(data => {
+      const versionNumberElement = document.getElementById('version-number');
+      versionNumberElement.textContent = data.version; // Set the version number
+      console.log(`Version number displayed: ${data.version}`);
+    })
+    .catch(error => console.error('Error fetching version number:', error));
+}
+
+// Call the function to display the version number on page load
+document.addEventListener('DOMContentLoaded', displayVersion);
+
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize i18n
