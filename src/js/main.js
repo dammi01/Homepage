@@ -60,32 +60,6 @@ function initMobileMenu() {
   });
 }
 
-// Open/close dropdown function
-function toggleDropdown() {
-  languageDropdown.classList.toggle('show');
-}
-
-// Open dropdown on button click
-languageButton.addEventListener('click', (event) => {
-  event.stopPropagation(); // Prevent event from bubbling
-  toggleDropdown(); // Toggle dropdown visibility
-});
-
-// Handle language selection
-languageDropdown.querySelectorAll('button').forEach(button => {
-  button.addEventListener('click', (event) => {
-    const selectedLanguage = event.target.getAttribute('data-lang');
-    i18n.setLanguage(selectedLanguage); // Call setLanguage method
-    languageDropdown.classList.remove('show'); // Close dropdown after selection
-  });
-});
-
-// Prevent closing dropdown when losing focus
-languageButton.addEventListener('blur', (e) => {
-  if (!languageDropdown.contains(document.activeElement)) {
-    languageDropdown.classList.remove('show'); // Close dropdown if focus moves outside
-  }
-});
 
 // Language selector functionality
 function initLanguageSelector() {
