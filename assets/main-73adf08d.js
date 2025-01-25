@@ -88,6 +88,15 @@ function initLanguageSelector() {
       console.log('Dropdown closed after selection.');
     });
   });
+
+  // Prevent closing dropdown when hovering over it
+  languageDropdown.addEventListener('mouseenter', () => {
+    languageDropdown.classList.add('show'); // Keep dropdown open
+  });
+
+  languageDropdown.addEventListener('mouseleave', () => {
+    languageDropdown.classList.remove('show'); // Close dropdown when mouse leaves
+  });
 }
 
 // Skills section
