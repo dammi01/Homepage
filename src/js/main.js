@@ -69,7 +69,6 @@ function initLanguageSelector() {
   // Open/close dropdown function
   function toggleDropdown() {
     languageDropdown.classList.toggle('show');
-    console.log('Dropdown toggled:', languageDropdown.classList.contains('show') ? 'Open' : 'Closed');
   }
 
   // Open dropdown on button click
@@ -87,15 +86,6 @@ function initLanguageSelector() {
       languageDropdown.classList.remove('show'); // Close dropdown after selection
       console.log('Dropdown closed after selection.');
     });
-  });
-
-  // Prevent closing dropdown when hovering over it
-  languageDropdown.addEventListener('mouseenter', () => {
-    languageDropdown.classList.add('show'); // Keep dropdown open
-  });
-
-  languageDropdown.addEventListener('mouseleave', () => {
-    languageDropdown.classList.remove('show'); // Close dropdown when mouse leaves
   });
 }
 
