@@ -88,14 +88,6 @@ function initLanguageSelector() {
       console.log('Dropdown closed after selection.');
     });
   });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target)) {
-      languageDropdown.classList.remove('show'); // Close dropdown if it's open
-      console.log('Dropdown closed by clicking outside.');
-    }
-  });
 }
 
 // Skills section
