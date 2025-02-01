@@ -68,27 +68,38 @@ function initLanguageSelector() {
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
 
   // Open/close dropdown function
-  function toggleDropdown() {
-    languageDropdown.classList.toggle('show');
-  }
-
-  // Open dropdown on button click
-  languageButton.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent event from bubbling
-    toggleDropdown(); // Toggle dropdown visibility
-  });
-
-  // Handle language selection
-  languageDropdown.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', (event) => {
-      const selectedLanguage = event.target.getAttribute('data-lang');
-      console.log(`Language selected: ${selectedLanguage}`); // Example action
-      i18n.setLanguage(selectedLanguage); // Call setLanguage method
-      languageDropdown.classList.remove('show'); // Close dropdown after selection
-      console.log('Dropdown closed after selection.');
-    });
-  });
+function toggleDropdown() {
+  languageDropdown.classList.toggle('show');
 }
+
+// Open dropdown on button click
+languageButton.addEventListener('click', (event) => {
+  event.stopPropagation(); // Prevent event from bubbling
+  toggleDropdown(); // Toggle dropdown visibility
+});
+
+// Handle language selection
+languageDropdown.querySelectorAll('button').forEach(button => {
+  button.addEventListener('click', (event) => {
+    const selectedLanguage = event.target.getAttribute('data-lang');
+    i18n.setLanguage(selectedLanguage); // Call setLanguage method
+    languageDropdown.classList.remove('show'); // Close dropdown after selection
+  });
+});
+
+// Prevent closing dropdown when losing focus
+languageButton.addEventListener('blur', (e) => {
+  // Check if focus is moving to the dropdown
+  if (!languageDropdown.contains(document.activeElement)) {
+    languageDropdown.classList.remove('show'); // Close dropdown if focus moves outside
+  }
+});
+
+// Optional: Add focus event to keep dropdown open
+languageDropdown.addEventListener('focusin', () => {
+  languageDropdown.classList.add('show'); // Keep dropdown open while focused
+});
+
 
 // Skills section
 function initSkills() {
