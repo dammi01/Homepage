@@ -67,7 +67,7 @@ function initLanguageSelector() {
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
 
-  // Open/close dropdown function
+ // Open/close dropdown function
 function toggleDropdown() {
   languageDropdown.classList.toggle('show');
 }
