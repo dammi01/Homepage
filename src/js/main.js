@@ -66,40 +66,51 @@ function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
+  
+  let isDropdownOpen = false;
 
- // Open/close dropdown function
-function toggleDropdown() {
-  languageDropdown.classList.toggle('show');
-}
-
-// Open dropdown on button click
-languageButton.addEventListener('click', (event) => {
-  event.stopPropagation(); // Prevent event from bubbling
-  toggleDropdown(); // Toggle dropdown visibility
-});
-
-// Handle language selection
-languageDropdown.querySelectorAll('button').forEach(button => {
-  button.addEventListener('click', (event) => {
-    const selectedLanguage = event.target.getAttribute('data-lang');
-    i18n.setLanguage(selectedLanguage); // Call setLanguage method
-    languageDropdown.classList.remove('show'); // Close dropdown after selection
-  });
-});
-
-// Prevent closing dropdown when losing focus
-languageButton.addEventListener('blur', (e) => {
-  // Check if focus is moving to the dropdown
-  if (!languageDropdown.contains(document.activeElement)) {
-    languageDropdown.classList.remove('show'); // Close dropdown if focus moves outside
+  // Toggle dropdown function with explicit state management
+  function toggleDropdown(forceState = null) {
+    // If forceState is provided, use it; otherwise, toggle
+    isDropdownOpen = forceState !== null ? forceState : !isDropdownOpen;
+    
+    console.log(`Dropdown state: ${isDropdownOpen ? 'Open' : 'Closed'}`);
+    
+    if (isDropdownOpen) {
+      languageDropdown.classList.add('show');
+    } else {
+      languageDropdown.classList.remove('show');
+    }
   }
-});
 
-// Optional: Add focus event to keep dropdown open
-languageDropdown.addEventListener('focusin', () => {
-  languageDropdown.classList.add('show'); // Keep dropdown open while focused
-});
+  // Open dropdown on button click
+  languageButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    toggleDropdown(); // Toggle dropdown visibility
+  });
 
+  // Handle language selection
+  languageDropdown.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedLanguage = event.target.getAttribute('data-lang');
+      console.log(`Language selected: ${selectedLanguage}`);
+      i18n.setLanguage(selectedLanguage);
+      toggleDropdown(false); // Explicitly close dropdown
+    });
+  });
+
+  // Prevent closing dropdown when interacting with dropdown
+  languageDropdown.addEventListener('mouseenter', () => {
+    toggleDropdown(true); // Ensure dropdown stays open
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target)) {
+      toggleDropdown(false); // Close dropdown
+    }
+  });
+}
 
 // Skills section
 function initSkills() {
