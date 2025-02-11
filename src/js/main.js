@@ -60,56 +60,104 @@ function initMobileMenu() {
   });
 }
 
-
 // Language selector functionality
 function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
+  const languageOptions = languageDropdown.querySelectorAll('button');
   
   let isDropdownOpen = false;
+  let currentFocusIndex = -1;
 
   // Toggle dropdown function with explicit state management
   function toggleDropdown(forceState = null) {
-    // If forceState is provided, use it; otherwise, toggle
     isDropdownOpen = forceState !== null ? forceState : !isDropdownOpen;
     
-    console.log(`Dropdown state: ${isDropdownOpen ? 'Open' : 'Closed'}`);
+    console.log(`[DROPDOWN] State change: ${isDropdownOpen ? 'Open' : 'Closed'}`);
     
     if (isDropdownOpen) {
       languageDropdown.classList.add('show');
+      languageButton.setAttribute('aria-expanded', 'true');
+      
+      // Focus first option when dropdown opens
+      if (languageOptions.length > 0) {
+        currentFocusIndex = 0;
+        languageOptions[0].focus();
+      }
     } else {
       languageDropdown.classList.remove('show');
+      languageButton.setAttribute('aria-expanded', 'false');
+      languageButton.focus(); // Return focus to language button
+      currentFocusIndex = -1;
     }
   }
 
   // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
     event.stopPropagation();
-    toggleDropdown(); // Toggle dropdown visibility
+    toggleDropdown();
   });
 
   // Handle language selection
-  languageDropdown.querySelectorAll('button').forEach(button => {
+  languageOptions.forEach((button, index) => {
     button.addEventListener('click', (event) => {
       const selectedLanguage = event.target.getAttribute('data-lang');
-      console.log(`Language selected: ${selectedLanguage}`);
+      console.log(`[DROPDOWN] Language selected: ${selectedLanguage}`);
       i18n.setLanguage(selectedLanguage);
-      toggleDropdown(false); // Explicitly close dropdown
+      toggleDropdown(false);
+    });
+
+    // Keyboard navigation within dropdown
+    button.addEventListener('keydown', (event) => {
+      switch(event.key) {
+        case 'ArrowDown':
+          event.preventDefault();
+          currentFocusIndex = (currentFocusIndex + 1) % languageOptions.length;
+          languageOptions[currentFocusIndex].focus();
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          currentFocusIndex = (currentFocusIndex - 1 + languageOptions.length) % languageOptions.length;
+          languageOptions[currentFocusIndex].focus();
+          break;
+        case 'Escape':
+          toggleDropdown(false);
+          break;
+        case 'Tab':
+          toggleDropdown(false);
+          break;
+      }
     });
   });
 
-  // Prevent closing dropdown when interacting with dropdown
-  languageDropdown.addEventListener('mouseenter', () => {
-    toggleDropdown(true); // Ensure dropdown stays open
+  // Keyboard events for language button
+  languageButton.addEventListener('keydown', (event) => {
+    switch(event.key) {
+      case 'Enter':
+      case ' ':
+      case 'ArrowDown':
+        event.preventDefault();
+        toggleDropdown(true);
+        break;
+      case 'Escape':
+        toggleDropdown(false);
+        break;
+    }
   });
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     if (!languageSelector.contains(e.target)) {
-      toggleDropdown(false); // Close dropdown
+      toggleDropdown(false);
     }
   });
+
+  // Accessibility attributes
+  languageButton.setAttribute('aria-haspopup', 'true');
+  languageButton.setAttribute('aria-expanded', 'false');
+  languageDropdown.setAttribute('role', 'menu');
+  languageOptions.forEach(option => option.setAttribute('role', 'menuitem'));
 }
 
 // Skills section
