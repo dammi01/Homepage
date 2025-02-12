@@ -353,8 +353,8 @@ function initThemeToggle() {
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme === 'dark');
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    updateThemeIcon(false);
+    document.documentElement.setAttribute('data-theme', 'dark');
+    updateThemeIcon(true);
   }
   
   // Toggle theme
