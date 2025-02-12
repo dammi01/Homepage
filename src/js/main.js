@@ -62,6 +62,7 @@ function initMobileMenu() {
 
 // Language selector functionality
 function initLanguageSelector() {
+  console.log('[DROPDOWN] Language selector initialized'); // Add this line
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
@@ -72,6 +73,8 @@ function initLanguageSelector() {
 
   // Toggle dropdown function with explicit state management
   function toggleDropdown(forceState = null) {
+    console.log('[DROPDOWN] Toggle function called'); // Add this line
+
     isDropdownOpen = forceState !== null ? forceState : !isDropdownOpen;
     
     console.log(`[DROPDOWN] State change: ${isDropdownOpen ? 'Open' : 'Closed'}`);
