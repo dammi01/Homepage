@@ -342,20 +342,10 @@ function updateCopyright() {
 // Theme toggle functionality
 function initThemeToggle() {
   const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('i');
   
-  // Check for saved theme preference or system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Set initial theme
-  if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme === 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcon(true);
-  }
+  // Set initial theme to dark
+  document.documentElement.setAttribute('data-theme', 'dark');
+  updateThemeIcon(true); // Set the icon to reflect dark theme
   
   // Toggle theme
   themeToggle.addEventListener('click', () => {
