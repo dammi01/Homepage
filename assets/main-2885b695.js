@@ -54,7 +54,7 @@ function initMobileMenu() {
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.header-right') && !e.target.closest('.language-selector')) {  
+    if (!e.target.closest('.header-right')) {  
       navbar.classList.remove('active');
     }
   });
@@ -152,7 +152,7 @@ function initLanguageSelector() {
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target)) {
+    if (!languageSelector.contains(e.target) && isDropdownOpen) {
       toggleDropdown(false);
     }
   });
