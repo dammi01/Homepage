@@ -95,6 +95,12 @@ function initLanguageSelector() {
       currentFocusIndex = -1;
     }
   }
+  
+  // prevents the default behavior of closing the dropdown when the button is clicked.
+  languageButton.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+    toggleDropdown();
+  });
 
   // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
