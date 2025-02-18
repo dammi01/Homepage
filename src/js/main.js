@@ -96,15 +96,10 @@ function initLanguageSelector() {
     }
   }
   
-  // prevents the default behavior of closing the dropdown when the button is clicked.
-  languageButton.addEventListener('mousedown', (event) => {
-    event.preventDefault();
-    toggleDropdown();
-  });
-
-  // Open dropdown on button click
+    // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
     event.stopPropagation();
+    event.preventDefault(); // Prevent default behavior of closing the dropdown
     toggleDropdown();
   });
 
