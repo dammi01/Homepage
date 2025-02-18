@@ -54,7 +54,7 @@ function initMobileMenu() {
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.header-right')) {
+    if (!e.target.closest('.header-right') && !e.target.closest('.language-selector')) {  
       navbar.classList.remove('active');
     }
   });
