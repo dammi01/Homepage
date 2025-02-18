@@ -60,34 +60,113 @@ function initMobileMenu() {
   });
 }
 
-
 // Language selector functionality
 function initLanguageSelector() {
+  console.log('[DROPDOWN] Language selector initialized'); // Add this line
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
+  const languageOptions = languageDropdown.querySelectorAll('button');
+  
+  let isDropdownOpen = false;
+  let currentFocusIndex = -1;
 
-  // Open/close dropdown function
-  function toggleDropdown() {
-    languageDropdown.classList.toggle('show');
+  // Toggle dropdown function with explicit state management
+  function toggleDropdown(forceState = null) {
+    console.log('[DROPDOWN] Toggle function called'); // Add this line
+
+    isDropdownOpen = forceState !== null ? forceState : !isDropdownOpen;
+    
+    console.log(`[DROPDOWN] State change: ${isDropdownOpen ? 'Open' : 'Closed'}`);
+    
+    if (isDropdownOpen) {
+      languageDropdown.classList.add('show');
+      languageButton.setAttribute('aria-expanded', 'true');
+      
+      // Focus first option when dropdown opens
+      if (languageOptions.length > 0) {
+        currentFocusIndex = 0;
+        languageOptions[0].focus();
+      }
+    } else {
+      languageDropdown.classList.remove('show');
+      languageButton.setAttribute('aria-expanded', 'false');
+      languageButton.focus(); // Return focus to language button
+      currentFocusIndex = -1;
+    }
   }
+  
+  // prevents the default behavior of closing the dropdown when the button is clicked.
+  languageButton.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+    toggleDropdown();
+  });
 
   // Open dropdown on button click
   languageButton.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent event from bubbling
-    toggleDropdown(); // Toggle dropdown visibility
+    event.stopPropagation();
+    toggleDropdown();
   });
 
   // Handle language selection
-  languageDropdown.querySelectorAll('button').forEach(button => {
+  languageOptions.forEach((button, index) => {
     button.addEventListener('click', (event) => {
       const selectedLanguage = event.target.getAttribute('data-lang');
-      console.log(`Language selected: ${selectedLanguage}`); // Example action
-      i18n.setLanguage(selectedLanguage); // Call setLanguage method
-      languageDropdown.classList.remove('show'); // Close dropdown after selection
-      console.log('Dropdown closed after selection.');
+      console.log(`[DROPDOWN] Language selected: ${selectedLanguage}`);
+      i18n.setLanguage(selectedLanguage);
+      toggleDropdown(false);
+    });
+
+    // Keyboard navigation within dropdown
+    button.addEventListener('keydown', (event) => {
+      switch(event.key) {
+        case 'ArrowDown':
+          event.preventDefault();
+          currentFocusIndex = (currentFocusIndex + 1) % languageOptions.length;
+          languageOptions[currentFocusIndex].focus();
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          currentFocusIndex = (currentFocusIndex - 1 + languageOptions.length) % languageOptions.length;
+          languageOptions[currentFocusIndex].focus();
+          break;
+        case 'Escape':
+          toggleDropdown(false);
+          break;
+        case 'Tab':
+          toggleDropdown(false);
+          break;
+      }
     });
   });
+
+  // Keyboard events for language button
+  languageButton.addEventListener('keydown', (event) => {
+    switch(event.key) {
+      case 'Enter':
+      case ' ':
+      case 'ArrowDown':
+        event.preventDefault();
+        toggleDropdown(true);
+        break;
+      case 'Escape':
+        toggleDropdown(false);
+        break;
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target)) {
+      toggleDropdown(false);
+    }
+  });
+
+  // Accessibility attributes
+  languageButton.setAttribute('aria-haspopup', 'true');
+  languageButton.setAttribute('aria-expanded', 'false');
+  languageDropdown.setAttribute('role', 'menu');
+  languageOptions.forEach(option => option.setAttribute('role', 'menuitem'));
 }
 
 // Skills section
@@ -269,20 +348,10 @@ function updateCopyright() {
 // Theme toggle functionality
 function initThemeToggle() {
   const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('i');
   
-  // Check for saved theme preference or system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Set initial theme
-  if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme === 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    updateThemeIcon(false);
-  }
+  // Set initial theme to dark
+  document.documentElement.setAttribute('data-theme', 'dark');
+  updateThemeIcon(true); // Set the icon to reflect dark theme
   
   // Toggle theme
   themeToggle.addEventListener('click', () => {
