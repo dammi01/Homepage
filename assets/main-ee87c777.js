@@ -62,19 +62,16 @@ function initMobileMenu() {
 
 // Language selector functionality
 function initLanguageSelector() {
-  console.log('[DROPDOWN] Language selector initialized'); // Add this line
+  console.log('[DROPDOWN] Language selector initialized');
   const languageSelector = document.querySelector('.language-selector');
   const languageButton = languageSelector.querySelector('.language-button');
   const languageDropdown = languageSelector.querySelector('.language-dropdown');
   const languageOptions = languageDropdown.querySelectorAll('button');
   
   let isDropdownOpen = false;
-  let currentFocusIndex = -1;
 
-  // Toggle dropdown function with explicit state management
   function toggleDropdown(forceState = null) {
-    console.log('[DROPDOWN] Toggle function called'); // Add this line
-
+    console.log('[DROPDOWN] Toggle function called');
     isDropdownOpen = forceState !== null ? forceState : !isDropdownOpen;
     
     console.log(`[DROPDOWN] State change: ${isDropdownOpen ? 'Open' : 'Closed'}`);
@@ -82,60 +79,42 @@ function initLanguageSelector() {
     if (isDropdownOpen) {
       languageDropdown.classList.add('show');
       languageButton.setAttribute('aria-expanded', 'true');
-      
-      // Focus first option when dropdown opens
-      if (languageOptions.length > 0) {
-        currentFocusIndex = 0;
-        languageOptions[0].focus();
-      }
     } else {
       languageDropdown.classList.remove('show');
       languageButton.setAttribute('aria-expanded', 'false');
-      languageButton.focus(); // Return focus to language button
-      currentFocusIndex = -1;
     }
   }
-  
-    // Open dropdown on button click
+
+  // Toggle dropdown on button click
   languageButton.addEventListener('click', (event) => {
     event.stopPropagation();
-    event.preventDefault(); // Prevent default behavior of closing the dropdown
+    event.preventDefault();
     toggleDropdown();
   });
 
+  // Prevent dropdown from closing when clicking inside
+  languageDropdown.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!languageSelector.contains(e.target) && isDropdownOpen) {
+      toggleDropdown(false);
+    }
+  });
+
   // Handle language selection
-  languageOptions.forEach((button, index) => {
+  languageOptions.forEach((button) => {
     button.addEventListener('click', (event) => {
       const selectedLanguage = event.target.getAttribute('data-lang');
       console.log(`[DROPDOWN] Language selected: ${selectedLanguage}`);
       i18n.setLanguage(selectedLanguage);
       toggleDropdown(false);
     });
-
-    // Keyboard navigation within dropdown
-    button.addEventListener('keydown', (event) => {
-      switch(event.key) {
-        case 'ArrowDown':
-          event.preventDefault();
-          currentFocusIndex = (currentFocusIndex + 1) % languageOptions.length;
-          languageOptions[currentFocusIndex].focus();
-          break;
-        case 'ArrowUp':
-          event.preventDefault();
-          currentFocusIndex = (currentFocusIndex - 1 + languageOptions.length) % languageOptions.length;
-          languageOptions[currentFocusIndex].focus();
-          break;
-        case 'Escape':
-          toggleDropdown(false);
-          break;
-        case 'Tab':
-          toggleDropdown(false);
-          break;
-      }
-    });
   });
 
-  // Keyboard events for language button
+  // Keyboard events for accessibility
   languageButton.addEventListener('keydown', (event) => {
     switch(event.key) {
       case 'Enter':
@@ -149,19 +128,6 @@ function initLanguageSelector() {
         break;
     }
   });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!languageSelector.contains(e.target) && isDropdownOpen) {
-      toggleDropdown(false);
-    }
-  });
-
-  // Accessibility attributes
-  languageButton.setAttribute('aria-haspopup', 'true');
-  languageButton.setAttribute('aria-expanded', 'false');
-  languageDropdown.setAttribute('role', 'menu');
-  languageOptions.forEach(option => option.setAttribute('role', 'menuitem'));
 }
 
 // Skills section
