@@ -3,68 +3,59 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-# --- Configuration ---
-# The branch with your source code
-SOURCE_BRANCH="main"
+echo "🔹 Starting deployment..."
 
-# The branch that GitHub Pages is deploying from
-DEPLOY_BRANCH="gh-pages"
+# --- Versioning and Commit Message ---
 
-# The directory to publish to the deploy branch
-PUBLISH_DIR="." 
-
-# --- Versioning Logic ---
-echo "🔹 Starting versioning process..."
-
-# Check if the VERSION file exists, if not, create it.
-if [ ! -f VERSION ]; then
-    echo "1.0.0" > VERSION
-    git add VERSION
-    git commit -m "chore: add VERSION file"
-    echo "🔹 Created and committed VERSION file."
+# 1. Ensure we are on the main branch
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
+  echo "❌ Error: This script must be run from the 'main' branch."
+  exit 1
 fi
 
-# Read the current version from the VERSION file
+# 2. Increment version
 current_version=$(cat VERSION)
-echo "Current version: $current_version"
-
-# Increment the patch version number (the last digit)
 new_version=$(echo $current_version | awk -F. -v OFS=. '{$NF = $NF + 1; print}')
-echo "New version will be: $new_version"
-
-# Update the VERSION file with the new version number
 echo $new_version > VERSION
+echo "⬆️  Version bumped from $current_version to $new_version"
 
-# --- Git Logic ---
-echo "🔹 Starting deployment process..."
-
-# Define the commit message. Use the first argument ($1) if it exists,
-# otherwise use a default message including the new version number.
+# 3. Determine the commit message
 if [ -z "$1" ]; then
-  COMMIT_MSG="chore: Bump version to $new_version"
+  COMMIT_MSG="chore: Release v$new_version"
 else
-  COMMIT_MSG="$1"
+  COMMIT_MSG="$1 (v$new_version)"
 fi
 echo "💬 Using commit message: '$COMMIT_MSG'"
 
-# 1. Add and commit the new version number and any other changes to your source branch
+# 4. Commit version bump and any other changes to main
 git add .
 git commit -m "$COMMIT_MSG"
-echo "✅ Changes committed to '$SOURCE_BRANCH' branch."
-
-# 2. Push the built site to the deployment branch
-# This command forcefully pushes the content of your PUBLISH_DIR 
-# to the root of the DEPLOY_BRANCH.
-echo "🚀 Deploying to '$DEPLOY_BRANCH' branch..."
-git push origin `git subtree split --prefix $PUBLISH_DIR $SOURCE_BRANCH`:refs/heads/$DEPLOY_BRANCH --force
-echo "✅ Site successfully deployed to GitHub Pages."
-
-# 3. Create a new tag for the version, using the commit message as the tag annotation
 git tag -a "v$new_version" -m "$COMMIT_MSG"
-echo "✅ Created tag v$new_version."
+echo "✅ Changes and tag v$new_version committed to 'main' branch."
 
-# 4. Push all changes, including tags, to the remote repository
-git push origin $SOURCE_BRANCH --tags
-echo "✅ Pushed commits and tags to remote."
+# --- Deployment Logic ---
 
-echo "🎉 Deployment complete for version $new_version!"
+# 5. Get the latest main branch from remote
+git fetch origin main
+
+# 6. Forcefully create a local gh-pages branch from the latest main
+# This ensures we have all the latest files.
+git checkout -B gh-pages origin/main
+
+echo "🚀 Switched to temporary 'gh-pages' branch."
+
+# 7. Push this new branch to GitHub. The --force flag is crucial
+# because it replaces the entire history of the remote gh-pages branch.
+# This is what we want for a clean deployment.
+git push -f origin gh-pages
+
+echo "✅ Successfully pushed to 'gh-pages' branch on GitHub."
+
+# 8. Return to the main branch
+git checkout main
+
+# 9. Push main branch commits and tags
+git push origin main --tags
+
+echo "✅ Pushed 'main' branch and tags to remote."
+echo "🎉 Deployment complete!"
