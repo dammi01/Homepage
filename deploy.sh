@@ -68,22 +68,3 @@ git push origin $SOURCE_BRANCH --tags
 echo "✅ Pushed commits and tags to remote."
 
 echo "🎉 Deployment complete for version $new_version!"
-```
-
-### How to Use the New Script
-
-Now, when you want to deploy, you can run it with your message in quotes:
-
-```bash
-./deploy.sh "Updated my resume and fixed a link in the footer"
-```
-
-The text "Updated my resume and fixed a link in the footer" will be used as the commit message.
-
-If you run it the old way, without a message:
-
-```bash
-./deploy.sh
-```
-
-It will simply use the default message, `chore: Bump version to 1.0.48` (or whatever the next version is). So you haven't lost any functionality, only gained a new o
