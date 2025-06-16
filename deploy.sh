@@ -11,7 +11,6 @@ SOURCE_BRANCH="main"
 DEPLOY_BRANCH="gh-pages"
 
 # The directory to publish to the deploy branch
-# This should contain only your final HTML, CSS, JS, and assets
 PUBLISH_DIR="." 
 
 # --- Versioning Logic ---
@@ -39,23 +38,29 @@ echo $new_version > VERSION
 # --- Git Logic ---
 echo "🔹 Starting deployment process..."
 
-# 1. Add and commit the new version number to your source branch
-git add VERSION
-git commit -m "chore: Bump version to $new_version"
-echo "✅ Version bumped and committed to '$SOURCE_BRANCH' branch."
+# Define the commit message. Use the first argument ($1) if it exists,
+# otherwise use a default message including the new version number.
+if [ -z "$1" ]; then
+  COMMIT_MSG="chore: Bump version to $new_version"
+else
+  COMMIT_MSG="$1"
+fi
+echo "💬 Using commit message: '$COMMIT_MSG'"
+
+# 1. Add and commit the new version number and any other changes to your source branch
+git add .
+git commit -m "$COMMIT_MSG"
+echo "✅ Changes committed to '$SOURCE_BRANCH' branch."
 
 # 2. Push the built site to the deployment branch
 # This command forcefully pushes the content of your PUBLISH_DIR 
 # to the root of the DEPLOY_BRANCH.
-# It's a clean way to update a gh-pages branch.
-# The --prefix flag specifies the directory to push.
-# The `.` means the current directory.
 echo "🚀 Deploying to '$DEPLOY_BRANCH' branch..."
 git push origin `git subtree split --prefix $PUBLISH_DIR $SOURCE_BRANCH`:refs/heads/$DEPLOY_BRANCH --force
 echo "✅ Site successfully deployed to GitHub Pages."
 
-# 3. Create a new tag for the version
-git tag -a "v$new_version" -m "Release version $new_version"
+# 3. Create a new tag for the version, using the commit message as the tag annotation
+git tag -a "v$new_version" -m "$COMMIT_MSG"
 echo "✅ Created tag v$new_version."
 
 # 4. Push all changes, including tags, to the remote repository
@@ -63,5 +68,22 @@ git push origin $SOURCE_BRANCH --tags
 echo "✅ Pushed commits and tags to remote."
 
 echo "🎉 Deployment complete for version $new_version!"
+```
 
+### How to Use the New Script
 
+Now, when you want to deploy, you can run it with your message in quotes:
+
+```bash
+./deploy.sh "Updated my resume and fixed a link in the footer"
+```
+
+The text "Updated my resume and fixed a link in the footer" will be used as the commit message.
+
+If you run it the old way, without a message:
+
+```bash
+./deploy.sh
+```
+
+It will simply use the default message, `chore: Bump version to 1.0.48` (or whatever the next version is). So you haven't lost any functionality, only gained a new o
