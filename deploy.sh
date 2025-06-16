@@ -19,7 +19,13 @@ new_version=$(echo $current_version | awk -F. -v OFS=. '{$NF = $NF + 1; print}')
 echo $new_version > VERSION
 echo "⬆️  Version bumped from $current_version to $new_version"
 
-# 3. Determine the commit message
+# 3. **NEW STEP**: Update the version number directly in index.html
+# This command finds the span with id="version-number" and replaces its content.
+# It works on both Linux and macOS.
+sed -i.bak "s#<span class=\"version-number\" id=\"version-number\">.*</span>#<span class=\"version-number\" id=\"version-number\">${new_version}</span>#" index.html && rm index.html.bak
+echo "🔄 Updated version in index.html to ${new_version}"
+
+# 4. Determine the commit message
 if [ -z "$1" ]; then
   COMMIT_MSG="chore: Release v$new_version"
 else
@@ -27,7 +33,7 @@ else
 fi
 echo "💬 Using commit message: '$COMMIT_MSG'"
 
-# 4. Commit version bump and any other changes to main
+# 5. Commit version bump and any other changes to main
 git add .
 git commit -m "$COMMIT_MSG"
 git tag -a "v$new_version" -m "$COMMIT_MSG"
@@ -35,26 +41,23 @@ echo "✅ Changes and tag v$new_version committed to 'main' branch."
 
 # --- Deployment Logic ---
 
-# 5. Get the latest main branch from remote
+# 6. Get the latest main branch from remote
 git fetch origin main
 
-# 6. Forcefully create a local gh-pages branch from the latest main
-# This ensures we have all the latest files.
+# 7. Forcefully create a local gh-pages branch from the latest main
 git checkout -B gh-pages origin/main
 
 echo "🚀 Switched to temporary 'gh-pages' branch."
 
-# 7. Push this new branch to GitHub. The --force flag is crucial
-# because it replaces the entire history of the remote gh-pages branch.
-# This is what we want for a clean deployment.
+# 8. Push this new branch to GitHub. The --force flag is crucial.
 git push -f origin gh-pages
 
 echo "✅ Successfully pushed to 'gh-pages' branch on GitHub."
 
-# 8. Return to the main branch
+# 9. Return to the main branch
 git checkout main
 
-# 9. Push main branch commits and tags
+# 10. Push main branch commits and tags
 git push origin main --tags
 
 echo "✅ Pushed 'main' branch and tags to remote."
